@@ -13,7 +13,6 @@ namespace SeleniumTestFramework
     public class TelerikWebmailPage
     {
         IWebDriver driver;
-        //private TimeSpan timeout = TimeSpan.FromSeconds(20);
         private double timeout = 20;
 
 
@@ -21,7 +20,6 @@ namespace SeleniumTestFramework
         {
             this.driver = webdriver;
             PageFactory.InitElements(driver, this);
-            //PageFactory.InitElements(new RetryingElementLocator(driver, timeout), this);
         }
 
         [FindsBy(How = How.Id, Using = "ctl00_FolderContent_FolderNavigationControl_rtvFolders")]
