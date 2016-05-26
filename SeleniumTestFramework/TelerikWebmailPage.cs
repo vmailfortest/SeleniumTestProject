@@ -14,6 +14,7 @@ namespace SeleniumTestFramework
         IWebDriver driver;
         private double timeout = 10;
 
+
         public TelerikWebmailPage(IWebDriver webdriver)
         {
             this.driver = webdriver;
