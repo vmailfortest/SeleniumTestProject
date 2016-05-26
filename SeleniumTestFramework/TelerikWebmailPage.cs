@@ -6,24 +6,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace SeleniumTestFramework
 {
     public class TelerikWebmailPage
     {
         IWebDriver driver;
-        private double timeout = 10;
+        //private TimeSpan timeout = TimeSpan.FromSeconds(20);
+        private double timeout = 20;
 
 
         public TelerikWebmailPage(IWebDriver webdriver)
         {
             this.driver = webdriver;
             PageFactory.InitElements(driver, this);
+            //PageFactory.InitElements(new RetryingElementLocator(driver, timeout), this);
         }
 
         [FindsBy(How = How.Id, Using = "ctl00_FolderContent_FolderNavigationControl_rtvFolders")]
         private IWebElement FoldersPanel;
 
+        [FindsBySequence]
+        [FindsBy(How = How.Id, Using = "ctl00_MainContent_messages_ctl00")]
         [FindsBy(How = How.XPath, Using = ".//span[contains(text(), 'Date:')]")]
         private IWebElement emailsOnPanel;
         public string emailsOnPanelXpath = ".//span[contains(text(), 'Date:')]";
@@ -38,18 +43,26 @@ namespace SeleniumTestFramework
             this.FoldersPanel.FindElement(By.XPath("//span[contains(text(), '" + folderName + "')]/preceding::span[1]")).Click();
         }
 
-        public void ClickSubfoldersOfSpecificFolder(string folderName)
+        public bool VerifySubfoldersOfSpecificFolder(string folderName)
         {
             var listOfSubfolders = this.FoldersPanel.FindElements(By.XPath("//span[contains(text(), '" + folderName + "')]/../../ul/li"));
+            bool result = true;
 
             if(listOfSubfolders.Count > 0)
             {
                 foreach(var element in listOfSubfolders)
                 {
                     element.Click();
-                    new WebDriverWait(driver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath(emailsOnPanelXpath)));
+                    try { 
+                        new WebDriverWait(driver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath(this.emailsOnPanelXpath)));
+                    }
+                    catch(ElementNotVisibleException e)
+                    {
+                        result = false;
+                    }
                 }
             }
+            return result;
         }
     }
 }

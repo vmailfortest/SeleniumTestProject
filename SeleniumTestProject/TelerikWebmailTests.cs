@@ -40,10 +40,7 @@ namespace SeleniumTestProject
 
             homePage.ExpandSpecificFolder("Kendo UI");
 
-            homePage.ClickSubfoldersOfSpecificFolder("Kendo UI");
-
+            homePage.VerifySubfoldersOfSpecificFolder("Kendo UI").Should().BeTrue();
         }
-
-
     }
 }
