@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using SeleniumTestFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SeleniumTestProject
+namespace SeleniumTestProject.Lesson2
 {
     [TestFixture]
     class TelerikWebmailTests

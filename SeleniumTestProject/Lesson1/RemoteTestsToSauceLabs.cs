@@ -6,7 +6,7 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using FluentAssertions;
 
-namespace SeleniumTestProject
+namespace SeleniumTestProject.Lesson1
 {
     [TestFixture]
     public class RemoteTestsToSauceLabs

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=4.6.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.6.1\lib\net45\FluentAssertions.dll</HintPath>
@@ -89,10 +92,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DifferentTests\RemoteTestsToSauceLabs.cs" />
-    <Compile Include="DifferentTests\RemoteTestsToBrowserStack.cs" />
+    <Compile Include="Lesson1\RemoteTestsToSauceLabs.cs" />
+    <Compile Include="Lesson1\RemoteTestsToBrowserStack.cs" />
+    <Compile Include="Lesson2\TelerikWebmailPage.cs" />
+    <Compile Include="Lesson3\CatalogPage.cs" />
+    <Compile Include="Lesson3\LoginPage.cs" />
+    <Compile Include="Lesson3\FilmCatalogTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TelerikWebmailTests.cs" />
+    <Compile Include="Lesson2\TelerikWebmailTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

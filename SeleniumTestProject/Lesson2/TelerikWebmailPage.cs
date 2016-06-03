@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Threading;
 
-namespace SeleniumTestFramework
+namespace SeleniumTestProject.Lesson2
 {
     public class TelerikWebmailPage
     {
         IWebDriver driver;
-        private double timeout = 20;
+        private double timeout = 5;
 
 
         public TelerikWebmailPage(IWebDriver webdriver)
@@ -39,22 +40,33 @@ namespace SeleniumTestFramework
         public void ExpandSpecificFolder(string folderName)
         {
             this.FoldersPanel.FindElement(By.XPath("//span[contains(text(), '" + folderName + "')]/preceding::span[1]")).Click();
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(d => (bool)(d as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0"));
+
+            IWebElement el = driver.FindElement(By.XPath(this.emailsOnPanelXpath));
+            Console.WriteLine(el.Text);
         }
 
         public bool VerifySubfoldersOfSpecificFolder(string folderName)
         {
+            // Get list of available folders
             var listOfSubfolders = this.FoldersPanel.FindElements(By.XPath("//span[contains(text(), '" + folderName + "')]/../../ul/li"));
             bool result = true;
 
-            if(listOfSubfolders.Count > 0)
+            if (listOfSubfolders.Count > 0)
             {
-                foreach(var element in listOfSubfolders)
+                foreach (var element in listOfSubfolders)
                 {
                     element.Click();
-                    try { 
-                        new WebDriverWait(driver, TimeSpan.FromSeconds(timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath(this.emailsOnPanelXpath)));
+                    var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                    wait.Until(d => (bool)(d as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0"));
+
+                    try
+                    {
+                        IWebElement el = driver.FindElement(By.XPath(this.emailsOnPanelXpath));
+                        Console.WriteLine(el.Text);
                     }
-                    catch(ElementNotVisibleException e)
+                    catch (ElementNotVisibleException e)
                     {
                         result = false;
                     }
@@ -64,3 +76,4 @@ namespace SeleniumTestFramework
         }
     }
 }
+

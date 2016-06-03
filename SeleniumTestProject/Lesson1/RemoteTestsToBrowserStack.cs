@@ -9,7 +9,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 
-namespace SeleniumTestProject
+namespace SeleniumTestProject.Lesson1
 {
     [TestFixture]
     public class RemoteTestsToBrowserStack
