@@ -3,9 +3,10 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Windows;
+using System.Windows.Forms;
+using Keys = OpenQA.Selenium.Keys;
 
 namespace SeleniumTestProject.Lesson3
 {
@@ -33,6 +34,7 @@ namespace SeleniumTestProject.Lesson3
             List<string> results = new List<string>();
 
             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until<IWebElement>(d => d.FindElement(By.ClassName("title")));
+
             var list = driver.FindElement(By.Id("results")).FindElements(By.ClassName("title"));
 
             foreach (var element in list)
@@ -46,7 +48,15 @@ namespace SeleniumTestProject.Lesson3
         public void SearchFor(string searchText)
         {
             this.searchField.Clear();
-            this.searchField.SendKeys(searchText);
+
+            //this.searchField.SendKeys(searchText);
+            Thread thread = new Thread(() => Clipboard.SetText(searchText));
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+
+            this.searchField.SendKeys(Keys.Control + "v");
+
             this.searchField.SendKeys(Keys.Enter);
 
             var wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(timeout));

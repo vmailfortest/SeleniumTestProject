@@ -62,9 +62,11 @@ namespace SeleniumTestProject.Lesson3
             LoginPage loginPage = new LoginPage(driver);
             CatalogPage catalogPage = loginPage.Login("admin", "admin");
 
+            catalogPage.SearchFor(""); // Clear search in case data saved drom previous session
+
             var listOfFilms = catalogPage.GetListOfFilms();
 
-            string searchText = listOfFilms[new Random().Next(0, listOfFilms.Count-1)];
+            string searchText = listOfFilms[new Random().Next(0, listOfFilms.Count - 1)];
             catalogPage.SearchFor(searchText);
 
             var listAfterSearch = catalogPage.GetListOfFilms();
@@ -91,18 +93,19 @@ namespace SeleniumTestProject.Lesson3
             // Test
             LoginPage loginPage = new LoginPage(driver);
             CatalogPage catalogPage = loginPage.Login("admin", "admin");
-            Thread.Sleep(2000);
-            //catalogPage.SearchFor(""); // Clear field;
+
             var listOfFilms = catalogPage.GetListOfFilms();
 
             string searchText = listOfFilms[new Random().Next(0, listOfFilms.Count - 1)];
             catalogPage.SearchFor(searchText);
+            var cookies = driver.Manage().Cookies.AllCookies;
             driver.Close();
 
             driver = FirefoxDriverWithCustomProfile("SeleniumFirefoxProfile");
-            loginPage = new LoginPage(driver);
             driver.Navigate().GoToUrl(url);
 
+            foreach (var cookie in cookies) driver.Manage().Cookies.AddCookie(cookie);
+            loginPage = new LoginPage(driver);
             catalogPage = loginPage.Login("admin", "admin");
 
             var listAfterSearch = catalogPage.GetListOfFilms();
