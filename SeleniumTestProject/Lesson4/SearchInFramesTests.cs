@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace SeleniumTestProject.Lesson4
 {
     [TestFixture]
-    class Tests
+    class SearchInFramesTests
     {
         IWebDriver driver;
 
@@ -42,7 +42,7 @@ namespace SeleniumTestProject.Lesson4
         {
             driver.Navigate().GoToUrl("http://localhost:180/HtmlPage.html");
 
-            Page newPage = new Page(driver);
+            SearchInFramesPage newPage = new SearchInFramesPage(driver);
 
             newPage.FindElementInAnyFrame(driver, By.XPath("//*[contains(text(), 'Frame One')]")).Text.Should()
                 .Be("Hello Frame One");
@@ -68,7 +68,7 @@ namespace SeleniumTestProject.Lesson4
         {
             driver.Navigate().GoToUrl("http://www.yourhtmlsource.com/examples/frameset1.html");
 
-            Page newPage = new Page(driver);
+            SearchInFramesPage newPage = new SearchInFramesPage(driver);
 
             newPage.FindElementInAnyFrame(driver, By.XPath("//*[contains(text(), 'make this layout')]")).Text.Should()
                 .Be("The type of code that would make this layout looks like this:");

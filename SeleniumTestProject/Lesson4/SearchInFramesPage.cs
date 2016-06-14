@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace SeleniumTestProject.Lesson4
 {
-    public class Page
+    public class SearchInFramesPage
     {
         IWebDriver driver;
         private double timeout = 20;
 
-        public Page(IWebDriver webdriver)
+        public SearchInFramesPage(IWebDriver webdriver)
         {
             this.driver = webdriver;
             PageFactory.InitElements(driver, this);

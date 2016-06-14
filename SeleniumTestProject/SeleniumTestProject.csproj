@@ -38,6 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutomatedTester.BrowserMob">
+      <HintPath>D:\-NEW-\SELENIUM\AutomatedTester.BrowserMob.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.6.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.6.1\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -45,6 +48,25 @@
     <Reference Include="FluentAssertions.Core, Version=4.6.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.6.1\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Flurl, Version=1.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.1.0.10\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\Flurl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HarSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HarSharp.1.0.0\lib\net45\HarSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HelperSharp, Version=1.0.5358.23405, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HelperSharp.0.0.4.1\lib\net35\HelperSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net20">
+      <HintPath>D:\-NEW-\SELENIUM\Newtonsoft.Json.Net20.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
@@ -99,8 +121,9 @@
     <Compile Include="Lesson3\CatalogPage.cs" />
     <Compile Include="Lesson3\LoginPage.cs" />
     <Compile Include="Lesson3\FilmCatalogTests.cs" />
-    <Compile Include="Lesson4\Page.cs" />
-    <Compile Include="Lesson4\Tests.cs" />
+    <Compile Include="Lesson4\SearchInFramesPage.cs" />
+    <Compile Include="Lesson4\SearchInFramesTests.cs" />
+    <Compile Include="Lesson5\StatusCodesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Lesson2\TelerikWebmailTests.cs" />
   </ItemGroup>
@@ -115,9 +138,7 @@
     <Content Include="TestData\Lesson4_SiteWithFrames\frame2.html" />
     <Content Include="TestData\Lesson4_SiteWithFrames\HtmlPage.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lesson5\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
