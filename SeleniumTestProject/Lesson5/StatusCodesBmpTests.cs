@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace SeleniumTestProject.Lesson5
 {
     [TestFixture]
-    class StatusCodesTests
+    class StatusCodesBmpTests
     {
         IWebDriver driver;
         Client BmpClient;
