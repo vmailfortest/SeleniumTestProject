@@ -135,6 +135,7 @@
     <Compile Include="Lesson3\FilmCatalogTests.cs" />
     <Compile Include="Lesson4\SearchInFramesPage.cs" />
     <Compile Include="Lesson4\SearchInFramesTests.cs" />
+    <Compile Include="Lesson5\FiddlerAutoLogin.cs" />
     <Compile Include="Lesson5\FiddlerReplacesHeaders.cs" />
     <Compile Include="Lesson5\StatusCodesFiddlerTests.cs" />
     <Compile Include="Lesson5\StatusCodesBmpTests.cs" />
