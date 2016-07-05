@@ -127,6 +127,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EmptyDirectory\EmptyClass.cs" />
     <Compile Include="Lesson1\RemoteTestsToSauceLabs.cs" />
     <Compile Include="Lesson1\RemoteTestsToBrowserStack.cs" />
     <Compile Include="Lesson2\TelerikWebmailPage.cs" />
