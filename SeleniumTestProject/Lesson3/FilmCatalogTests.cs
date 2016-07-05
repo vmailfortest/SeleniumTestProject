@@ -83,44 +83,44 @@ namespace SeleniumTestProject.Lesson3
             }
         }
 
-        [Test]
-        public void FilmCatalogSessionIsSavedTest()
-        {
-            // Pre-test
-            driver = FirefoxDriverWithCustomProfile("SeleniumFirefoxProfile");
-            driver.Navigate().GoToUrl(url);
+        //[Test]
+        //public void FilmCatalogSessionIsSavedTest()
+        //{
+        //    // Pre-test
+        //    driver = FirefoxDriverWithCustomProfile("SeleniumFirefoxProfile");
+        //    driver.Navigate().GoToUrl(url);
 
-            // Test
-            LoginPage loginPage = new LoginPage(driver);
-            CatalogPage catalogPage = loginPage.Login("admin", "admin");
+        //    // Test
+        //    LoginPage loginPage = new LoginPage(driver);
+        //    CatalogPage catalogPage = loginPage.Login("admin", "admin");
 
-            var listOfFilms = catalogPage.GetListOfFilms();
+        //    var listOfFilms = catalogPage.GetListOfFilms();
 
-            string searchText = listOfFilms[new Random().Next(0, listOfFilms.Count - 1)];
-            catalogPage.SearchFor(searchText);
-            var cookies = driver.Manage().Cookies.AllCookies;
-            driver.Close();
+        //    string searchText = listOfFilms[new Random().Next(0, listOfFilms.Count - 1)];
+        //    catalogPage.SearchFor(searchText);
+        //    var cookies = driver.Manage().Cookies.AllCookies;
+        //    driver.Close();
 
-            driver = FirefoxDriverWithCustomProfile("SeleniumFirefoxProfile");
-            driver.Navigate().GoToUrl(url);
+        //    driver = FirefoxDriverWithCustomProfile("SeleniumFirefoxProfile");
+        //    driver.Navigate().GoToUrl(url);
 
-            foreach (var cookie in cookies) driver.Manage().Cookies.AddCookie(cookie);
-            loginPage = new LoginPage(driver);
-            catalogPage = loginPage.Login("admin", "admin");
+        //    foreach (var cookie in cookies) driver.Manage().Cookies.AddCookie(cookie);
+        //    loginPage = new LoginPage(driver);
+        //    catalogPage = loginPage.Login("admin", "admin");
 
-            var listAfterSearch = catalogPage.GetListOfFilms();
+        //    var listAfterSearch = catalogPage.GetListOfFilms();
 
-            // Assert
-            foreach (var element in listAfterSearch)
-            {
-                element.Should().Contain(searchText);
-                Console.WriteLine(element);
-                if (!element.Contains(searchText))
-                {
-                    new Exception("In search results presented not valid result!");
-                }
-            }
-            Thread.Sleep(3000);
-        }
+        //    // Assert
+        //    foreach (var element in listAfterSearch)
+        //    {
+        //        element.Should().Contain(searchText);
+        //        Console.WriteLine(element);
+        //        if (!element.Contains(searchText))
+        //        {
+        //            new Exception("In search results presented not valid result!");
+        //        }
+        //    }
+        //    Thread.Sleep(3000);
+        //}
     }
 }

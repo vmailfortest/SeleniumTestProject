@@ -49,13 +49,13 @@ namespace SeleniumTestProject.Lesson3
         {
             this.searchField.Clear();
 
-            //this.searchField.SendKeys(searchText);
-            Thread thread = new Thread(() => Clipboard.SetText(searchText));
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-            thread.Join();
+            this.searchField.SendKeys(searchText);
+            //Thread thread = new Thread(() => Clipboard.SetText(searchText));
+            //thread.SetApartmentState(ApartmentState.STA);
+            //thread.Start();
+            //thread.Join();
 
-            this.searchField.SendKeys(Keys.Control + "v");
+            //this.searchField.SendKeys(Keys.Control + "v");
 
             this.searchField.SendKeys(Keys.Enter);
 
